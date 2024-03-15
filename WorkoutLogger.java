@@ -1,12 +1,32 @@
 // Sample code for optimizing workout logging in FitTracker application
+import java.util.List;
+
 public class WorkoutLogger {
     public void logWorkout(String workoutType, int duration, int intensity, List<String> equipmentUsed) {
-        // Implementation logic for logging workout details
-        // For demonstration, assume saving workout data to a database or file
-        // This is a simplified example, actual implementation would involve error handling, validation, etc.
         Workout workout = new Workout(workoutType, duration, intensity, equipmentUsed);
         // Save workout data to database or file
-        // Example:
-        // workoutRepository.saveWorkout(workout);
+        WorkoutDatabase.saveWorkout(workout);
+    }
+
+    // Additional helper classes and methods
+    static class Workout {
+        private String workoutType;
+        private int duration;
+        private int intensity;
+        private List<String> equipmentUsed;
+
+        public Workout(String workoutType, int duration, int intensity, List<String> equipmentUsed) {
+            this.workoutType = workoutType;
+            this.duration = duration;
+            this.intensity = intensity;
+            this.equipmentUsed = equipmentUsed;
+        }
+    }
+
+    static class WorkoutDatabase {
+        public static void saveWorkout(Workout workout) {
+            // Implementation logic for saving workout data to database
+            System.out.println("Workout logged successfully: " + workout);
+        }
     }
 }
